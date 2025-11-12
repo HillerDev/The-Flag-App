@@ -1,31 +1,31 @@
 .card {
-    background-color: var(--element-bg, white);
-    color: var(--text-color, black);
-    width: 250px;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
-    margin: 20px;
-    transition: transform 0.2s ease;
+  background-color: var(--element-bg, white);
+  color: var(--text-color, black);
+  width: 250px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px;
+  transition: transform 0.2s ease;
 }
 
 .card:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 .card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-bottom: 1px solid black;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 1px solid black;
 }
 
 .card h2 {
-    margin: 15px;
-    font-size: 1.1rem;
+  margin: 15px;
+  font-size: 1.1rem;
 }
 
 .card p {
-    margin: 5px 15px;
-    font-size: 0.9rem;
+  margin: 5px 15px;
+  font-size: 0.9rem;
 }
