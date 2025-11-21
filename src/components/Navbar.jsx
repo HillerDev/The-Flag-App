@@ -1,15 +1,9 @@
-import { useState } from "react";
 import lightLogo from "../assets/techover-logo.png";
 import darkLogo from "../assets/techover-logo-dark.png";
 import moonIcon from "../assets/moon.svg";
 import moonIconBordered from "../assets/moon-bordered.svg";
 
-const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+const Navbar = ({ darkMode, toggleTheme}) => {
 
   const buttonText = darkMode ? "Light Mode" : "Dark Mode";
 

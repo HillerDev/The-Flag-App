@@ -5,6 +5,7 @@ export const countries = [
     region: "Europe",
     capital: "Stockholm",
     flag: "https://flagcdn.com/w320/se.png",
+    borders: ["Norway", "Finland"]
   },
   {
     name: "Brazil",
@@ -20,5 +21,21 @@ export const countries = [
     capital: "Tokyo",
     flag: "https://flagcdn.com/w320/jp.png",
   },
+  {
+  name: "Norway",
+  population: "...",
+  region: "...",
+  capital: "...",
+  flag: "https://flagcdn.com/w320/no.png",
+  borders: ["Sweden", "Finland"]
+  },
+  {
+  name: "Finland",
+  population: "...",
+  region: "...",
+  capital: "...",
+  flag: "https://flagcdn.com/w320/fi.png",
+  borders: ["Sweden", "Norway"]
+  }
 ];
 
