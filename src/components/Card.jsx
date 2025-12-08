@@ -1,9 +1,9 @@
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ name, population, region, capital, flag }) => {
+const Card = ({ name, population, region, capital, flag, code }) => {
   return (
-    <Link to={`/${name}`} className="card-link">
+    <Link to={`/country/${code}`} className="card-link">
       <div className="card">
         <img src={flag} alt={`Flag of ${name}`} />
         <h2>{name}</h2>

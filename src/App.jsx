@@ -20,7 +20,7 @@ function App() {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://restcountries.com/v3.1/all?fields=name,capital,flags,region,population,borders"
+          "https://restcountries.com/v3.1/all?fields=name,capital,flags,region,population,borders,tld,currencies,languages,cca3"
         );
 
         if (!response.ok) {
@@ -29,14 +29,38 @@ function App() {
 
         const data = await response.json();
 
-        const mapped = data.map((country) => ({
-          name: country.name?.common || "No name",
-          population: country.population || 0,
-          region: country.region || "Unknown",
-          capital: country.capital?.[0] || "No capital",
-          flag: country.flags?.png || "",
-          borders: country.borders || [],
-        }));
+        const mapped = data.map(country => {
+          //native name
+          const nativeNameObj = country.name?.nativeName ? Object.values(country.name.nativeName)[0] : null;
+
+          const nativeName = nativeNameObj?.common || "No native name";
+
+          //top level domain
+          const tld = country.tld?.[0] || "No TLD";
+
+          //currency
+          const currencyObj = country.currencies ? Object.values(country.currencies)[0] : null;
+
+          const currency = currencyObj?.name || "No currency";
+
+          //language(s)
+          const language = country.languages ? Object.values(country.languages).join(", ") : "No language";
+
+          return {
+            name: country.name?.common || "No name",
+            population: country.population || 0,
+            region: country.region || "Unknown",
+            capital: country.capital?.[0] || "No capital",
+            flag: country.flags?.png || "",
+            borders: country.borders || [],
+            code: country.cca3,
+            nativeName, 
+            tld,
+            currency, 
+            language,
+            
+          };
+        });
 
         setCountriesData(mapped);
       } catch (err) {
@@ -87,10 +111,11 @@ function App() {
                       <Card
                         key={country.name}
                         name={country.name}
-                        population={country.population}
+                        population={country.population.toLocaleString()}
                         region={country.region}
                         capital={country.capital}
                         flag={country.flag}
+                        code={country.code}
                       />
                     ))}
                   </div>
@@ -98,8 +123,8 @@ function App() {
               }
             />
             <Route
-              path="/:name"
-              element={<CountryPage darkMode={darkMode} />}
+              path="/country/:code"
+              element={<CountryPage darkMode={darkMode} countries={countriesData} />}
             />
           </Routes>
         </main>
