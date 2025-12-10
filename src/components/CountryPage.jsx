@@ -64,7 +64,7 @@ const CountryPage = ({ darkMode, countries }) => {
                 borderCountries.map(border => (
                   <Link
                     key={border.code}
-                    to={`/country/${border.code}`}
+                    to={`/${border.code}`}
                     className="border-link"
                   >
                     {border.name}
