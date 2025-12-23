@@ -5,6 +5,7 @@ import Card from "./components/Card";
 import SearchAndFilter from "./components/SearchAndFilter.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CountryPage from "./components/CountryPage.jsx";
+import SkeletonCard from "./components/SkeletonCard.jsx";
 
 function App() {
   const [countriesData, setCountriesData] = useState([]);
@@ -13,7 +14,13 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterValue, setFilterValue] = useState("All");
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -67,6 +74,7 @@ function App() {
         console.error("API error:", err);
       } finally {
         setLoading(false);
+        
       }
     };
 
@@ -107,17 +115,22 @@ function App() {
                     />
                   </div>
                   <div className="card-container">
-                    {filteredCountries.map((country) => (
-                      <Card
-                        key={country.name}
-                        name={country.name}
-                        population={country.population.toLocaleString()}
-                        region={country.region}
-                        capital={country.capital}
-                        flag={country.flag}
-                        code={country.code}
-                      />
-                    ))}
+                    {loading
+                      ? Array.from({ length: 10 }).map((_, index) => (
+                      <SkeletonCard key={index} />
+                      ))
+                    : filteredCountries.map((country) => (
+                          <Card
+                            key={country.code}
+                            name={country.name}
+                            population={country.population.toLocaleString()}
+                            region={country.region}
+                            capital={country.capital}
+                            flag={country.flag}
+                            code={country.code}
+                          />
+                        ))
+                    }
                   </div>
                 </div>
               }
