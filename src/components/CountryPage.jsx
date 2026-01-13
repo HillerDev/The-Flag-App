@@ -2,12 +2,30 @@ import { Link, useParams } from "react-router-dom";
 import arrowLeftDark from "../assets/arrow-left-dark.svg";
 import arrowLeft from "../assets/arrow-left.svg";
 import "./CountryPage.css";
+import CountryPageSkeleton from "./CountryPageSkeleton";
 
-const CountryPage = ({ darkMode, countries }) => {
+const CountryPage = ({ darkMode, countries, loading }) => {
   const { code } = useParams(); // <-- vi tar emot country code istället för name
 
   // Hitta landet baserat på dess 3-bokstavskod (cca3)
   const country = countries.find(c => c.code === code);
+
+  if (loading) {
+    return (
+      <div className="country-page">
+        <div className="country-wrapper">
+          <div>
+            <Link to="/" className="back-button">
+              <img src={darkMode ? arrowLeft : arrowLeftDark} alt="arrow-left" />
+              Back
+              </Link>
+          </div>
+
+          <CountryPageSkeleton />
+        </div>
+      </div>
+    );
+  }
 
   if (!country) {
     return <h2>Country not found</h2>;
