@@ -137,7 +137,7 @@ function App() {
             />
             <Route
               path="/country/:code"
-              element={<CountryPage darkMode={darkMode} countries={countriesData} />}
+              element={<CountryPage darkMode={darkMode} countries={countriesData} loading={loading}/>}
             />
           </Routes>
         </main>
