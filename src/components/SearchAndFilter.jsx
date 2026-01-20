@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./SearchAndFilter.css";
 
 const SearchAndFilter = ({

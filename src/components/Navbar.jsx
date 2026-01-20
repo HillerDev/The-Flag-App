@@ -16,7 +16,7 @@ const Navbar = ({ darkMode, toggleTheme}) => {
         <img src={darkMode ? lightLogo : darkLogo} alt="techover-logo" />
       </div>
       <button className="toggle-dark-light-mode" onClick={toggleTheme}>
-        <img src={darkMode ? moonIcon : moonIconBordered} alt="" />
+        <img src={darkMode ? moonIcon : moonIconBordered} alt="toggle-dark-light-mode" />
         {buttonText}
       </button>
     </header>
