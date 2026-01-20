@@ -6,6 +6,7 @@ import SearchAndFilter from "./components/SearchAndFilter.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CountryPage from "./components/CountryPage.jsx";
 import SkeletonCard from "./components/SkeletonCard.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 function App() {
   const [countriesData, setCountriesData] = useState([]);
@@ -99,6 +100,7 @@ function App() {
   return (
     <div className={darkMode ? "dark" : "light"}>
       <Router>
+        <ScrollToTop />
         <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
         <main className="main-content">
           <Routes>

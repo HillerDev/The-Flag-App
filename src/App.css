@@ -15,16 +15,22 @@ body {
   background-color: var(--bg-color);
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .Navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 1rem 1rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
   height: 72px;
   z-index: 100;
@@ -33,11 +39,16 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.techover-logo img {
-  height: 20px;
+.Navbar h2 {
+  font-size: 0.85rem;
+}
+
+.techover-logo {
+  display: none;
 }
 
 .toggle-dark-light-mode {
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -75,10 +86,35 @@ button.toggle-dark-light-mode:focus {
 }
 
 .card-container {
-  padding-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
   justify-items: center;
-  background-color: var(--bg-color);
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    padding-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    background-color: var(--bg-color);
+  }
+
+  .Navbar {
+    padding: 1rem 3rem;
+  }
+
+  .Navbar h2 {
+    font-size: 1.25rem;
+  }
+
+  .techover-logo {
+    display: block;
+  }
+
+  .toggle-dark-light-mode {
+    font-size: 1.25rem;
+  }
+
 }
