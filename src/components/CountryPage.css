@@ -5,7 +5,7 @@
 }
 
 .country-wrapper {
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -13,19 +13,20 @@
 .country-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .back-button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0.2rem;
+  padding: 0rem 0.2rem;
   background-color: var(--bg-color);
   color: var(--text-color);
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .back-button img {
@@ -38,6 +39,7 @@
   max-width: 500px;
   aspect-ratio: 3 / 2;
   max-height: 300px;
+  margin-bottom: 1rem;
 }
 
 .flag img {
@@ -55,6 +57,9 @@
 .country-info h2 {
   width: 100%;
   max-width: 450px;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
 }
 
 .info-columns {
@@ -93,6 +98,10 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
+.border-link:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
 @media (min-width: 1024px) {
   .country-container {
     margin-top: 3rem;
@@ -108,7 +117,6 @@
     max-height: 300px;
     flex: 0 0 500px;
     overflow: hidden;
-    border-radius: 10px;
     flex-shrink: 0;
   }
 
@@ -119,11 +127,6 @@
 
   .country-wrapper {
     padding: 4rem 3rem;
-  }
-
-  .country-info h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
   }
 
   .left-column,
